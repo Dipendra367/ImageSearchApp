@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THAPA — Image Search</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">TH<span class="logo-accent">A</span>PA</div>
+
+  <div class="nav-search-wrap">
+    <i class="fa-solid fa-magnifying-glass nav-search-icon"></i>
+    <input class="nav-search" id="nav-search-input" type="text" placeholder="Search images…" autocomplete="off">
+    <span class="nav-kbd">/</span>
+  </div>
+
+  <div class="nav-right">
+    <div class="social-links">
+      <a class="social-link" href="https://www.facebook.com/dependra.thapa.52" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+      <a class="social-link" href="https://www.linkedin.com/in/dipendra-thapa-5b8029264/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a class="social-link" href="https://github.com/Dipendra367" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    </div>
+    <div class="nav-btn" id="theme-toggle-btn" title="Toggle theme"><i class="fa-solid fa-circle-half-stroke"></i></div>
+    <div class="nav-btn" id="shortcut-toggle-btn" title="Keyboard shortcuts"><i class="fa-solid fa-keyboard"></i></div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Powered by Unsplash</div>
+  <h1 class="hero-title">Find <em>beautiful</em><br>images, instantly.</h1>
+  <p class="hero-sub">Millions of free, high-quality visuals — curated daily</p>
+
+  <div class="hero-form">
+    <div class="hero-input-wrap">
+      <i class="fa-solid fa-magnifying-glass hero-input-icon"></i>
+      <input class="hero-input" id="hero-search-input" type="text" placeholder="Mountains, architecture, portraits…" autocomplete="off">
+      <button class="hero-btn" id="hero-search-btn">SEARCH</button>
+    </div>
+  </div>
+</div>
+
+<!-- FILTER CHIPS -->
+<div class="chips-scroll" id="chips-row">
+  <div class="chip active" data-q="nature">All</div>
+  <div class="chip" data-q="nature">Nature</div>
+  <div class="chip" data-q="architecture">Architecture</div>
+  <div class="chip" data-q="portrait">Portrait</div>
+  <div class="chip" data-q="technology">Technology</div>
+  <div class="chip" data-q="space cosmos">Space</div>
+  <div class="chip" data-q="minimal">Minimal</div>
+  <div class="chip" data-q="street photography">Street</div>
+  <div class="chip" data-q="ocean waves">Ocean</div>
+  <div class="chip" data-q="vintage film">Vintage</div>
+  <div class="chip" data-q="abstract art">Abstract</div>
+  <div class="chip" data-q="food">Food</div>
+</div>
+
+<!-- STATS ROW -->
+<div class="stats-row">
+  <span class="stat-txt"><strong id="result-count">0</strong> results</span>
+  <div class="dot"></div>
+  <span class="stat-txt" id="query-label">nature</span>
+  <button class="random-btn" id="random-btn">⚄ Random</button>
+  <select class="sort-sel" id="sort-select">
+    <option value="relevant">Relevance</option>
+    <option value="latest">Latest</option>
+  </select>
+</div>
+
+<!-- GRID -->
+<div class="results-grid" id="search-results"></div>
+
+<!-- PAGINATION -->
+<div class="pagination" id="pagination"></div>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modal" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <div class="modal-close" id="modal-close" title="Close"><i class="fa-solid fa-xmark"></i></div>
+    <div class="modal-img-side"><img id="modal-img" src="" alt=""></div>
+    <div class="modal-info-side">
+      <div class="modal-title" id="modal-title">Untitled</div>
+      <div class="modal-by" id="modal-by"></div>
+      <div class="modal-divider"></div>
+      <div id="modal-stats"></div>
+      <div class="modal-tags" id="modal-tags"></div>
+      <div class="modal-actions">
+        <button class="modal-dl" id="modal-dl"><i class="fa-solid fa-arrow-down"></i> DOWNLOAD FREE</button>
+        <button class="modal-open" id="modal-open-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> OPEN ON UNSPLASH</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- KEYBOARD SHORTCUTS PANEL -->
+<div class="shortcuts-panel" id="shortcuts-panel">
+  <div class="shortcut"><span class="kbd">/</span> Focus search</div>
+  <div class="shortcut"><span class="kbd">Esc</span> Close modal</div>
+  <div class="shortcut"><span class="kbd">Enter</span> Search</div>
+  <div class="shortcut"><span class="kbd">R</span> Random topic</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">TH<span>A</span>PA</div>
+  <div class="footer-socials">
+    <a class="footer-social" href="https://www.facebook.com/dependra.thapa.52" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+    <a class="footer-social" href="https://www.linkedin.com/in/dipendra-thapa-5b8029264/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <a class="footer-social" href="https://github.com/Dipendra367" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+  </div>
+  <div class="footer-credit">Images via Unsplash API</div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
